@@ -1,4 +1,4 @@
-package com.example.myapplication.viewmodel
+package com.example.myapplication.koin.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.example.myapplication.HelloRepository

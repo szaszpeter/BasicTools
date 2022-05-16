@@ -1,4 +1,4 @@
-package com.example.myapplication.di
+package com.example.myapplication.koin.di
 
 import org.koin.core.annotation.ComponentScan
 import org.koin.core.annotation.Module

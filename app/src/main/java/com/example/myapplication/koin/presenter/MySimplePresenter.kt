@@ -1,4 +1,4 @@
-package com.example.myapplication.presenter
+package com.example.myapplication.koin.presenter
 
 import com.example.myapplication.HelloRepository
 import org.koin.core.annotation.Factory

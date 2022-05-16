@@ -1,14 +1,15 @@
-package com.example.myapplication
+package com.example.myapplication.koin
 
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.presenter.MySimplePresenter
-import com.example.myapplication.viewmodel.MyViewModel
+import com.example.myapplication.R
+import com.example.myapplication.koin.presenter.MySimplePresenter
+import com.example.myapplication.koin.viewmodel.MyViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity() {
+class KoinActivity : AppCompatActivity() {
 
     // Lazy Inject ViewModel
     val myViewModel: MyViewModel by viewModel()

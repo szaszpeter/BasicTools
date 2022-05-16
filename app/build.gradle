@@ -17,6 +17,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
     }
 
     buildTypes {
@@ -31,6 +34,17 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
     }
 
     applicationVariants.all { variant ->
@@ -47,6 +61,9 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
+    implementation 'androidx.activity:activity-compose:1.3.1'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
@@ -55,13 +72,31 @@ dependencies {
     implementation "io.insert-koin:koin-core:3.2.0"
     // Koin
     implementation "io.insert-koin:koin-android:3.2.0"
-
     // Koin Annotations
     implementation "io.insert-koin:koin-annotations:1.0.0-beta-2"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
     ksp "io.insert-koin:koin-ksp-compiler:1.0.0-beta-2"
 
     // Testing
     testImplementation "io.insert-koin:koin-test:3.2.0"
+
+
+    implementation("androidx.compose.ui:ui:1.1.1")
+    // Tooling support (Previews, etc.)
+    implementation("androidx.compose.ui:ui-tooling:1.1.1")
+    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+    implementation("androidx.compose.foundation:foundation:1.1.1")
+    // Material Design
+    implementation("androidx.compose.material:material:1.1.1")
+    // Material design icons
+    implementation("androidx.compose.material:material-icons-core:1.1.1")
+    implementation("androidx.compose.material:material-icons-extended:1.1.1")
+    // Integration with observables
+    implementation("androidx.compose.runtime:runtime-livedata:1.1.1")
+    implementation("androidx.compose.runtime:runtime-rxjava2:1.1.1")
+
+    // UI Tests
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.1.1")
 
 
 
