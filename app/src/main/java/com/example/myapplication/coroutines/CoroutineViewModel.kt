@@ -17,7 +17,7 @@ class CoroutineViewModel(
         viewModelScope.launch {
 
             Log.e("Couroutine", " Launching")
-            
+
             val jsonBody = "{ username: \"$username\", token: \"$token\"}"
 
             // Make the network call and suspend execution until it finishes
