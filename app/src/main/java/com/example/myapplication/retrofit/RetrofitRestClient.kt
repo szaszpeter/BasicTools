@@ -26,7 +26,7 @@ class RetrofitRestClient {
                 .create()
 
             val retrofit = Retrofit.Builder()
-                .baseUrl(" https://enter.baseurl.here/")
+                .baseUrl(" https://httpbin.org/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(httpClient)
                 .build()
