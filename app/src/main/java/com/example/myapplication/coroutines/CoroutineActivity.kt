@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
@@ -30,7 +32,14 @@ class CoroutineActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    SimpleButton()
+                    Column {
+                        SimpleCoroutineButton()
+                        AsyncAwaitButton()
+                        AsyncAwaitAllButton()
+                        CoroutineScopeButton()
+                        JobExampleButton()
+                        CoroutineContextExampleButton()
+                    }
                 }
             }
         }
@@ -38,11 +47,72 @@ class CoroutineActivity : ComponentActivity() {
 
 
     @Composable
-    fun SimpleButton() {
+    fun SimpleCoroutineButton() {
         Button(onClick = {
-            viewModel.launchSampleCoroutine("User", "token")
+            viewModel.launchSampleCoroutine()
         }) {
             Text(text = "Launch Coroutine")
+        }
+    }
+
+    @Composable
+    fun AsyncAwaitButton() {
+        Button(onClick = {
+            viewModel.asyncAwaitSample()
+        }) {
+            Text(text = "Launch AsyncAwait")
+        }
+    }
+
+    @Composable
+    fun AsyncAwaitAllButton() {
+        Button(onClick = {
+            viewModel.asyncAwaitAllSample()
+        }) {
+            Text(text = "Launch AsyncAwait")
+        }
+    }
+
+    @Composable
+    fun CoroutineScopeButton() {
+        Row{
+            Button(onClick = {
+                viewModel.customScopeMethod()
+            }) {
+                Text(text = "Coroutine Scope")
+            }
+
+            Button(onClick = {
+                viewModel.cleanUp()
+            }) {
+                Text(text = "Cancel Scope")
+            }
+        }
+    }
+
+    @Composable
+    fun JobExampleButton() {
+        Row{
+            Button(onClick = {
+                viewModel.jobExampleMethod(false)
+            }) {
+                Text(text = "Job Example")
+            }
+
+            Button(onClick = {
+                viewModel.jobExampleMethod(true)
+            }) {
+                Text(text = "Job Example With Cancel")
+            }
+        }
+    }
+
+    @Composable
+    fun CoroutineContextExampleButton() {
+        Button(onClick = {
+            viewModel.coroutineContextExample()
+        }) {
+            Text(text = "Coroutine Context")
         }
     }
 
@@ -50,7 +120,11 @@ class CoroutineActivity : ComponentActivity() {
     @Composable
     fun DefaultPreview2() {
         MyApplicationTheme {
-            SimpleButton()
+            Column {
+                SimpleCoroutineButton()
+                AsyncAwaitButton()
+            }
+
         }
     }
 }
