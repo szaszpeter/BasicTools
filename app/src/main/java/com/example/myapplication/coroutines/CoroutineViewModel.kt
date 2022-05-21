@@ -8,7 +8,8 @@ import org.koin.android.annotation.KoinViewModel
 
 @KoinViewModel
 class CoroutineViewModel(
-    private val coroutineRepo: CoroutineSampleRepository
+    private val coroutineRepo: CoroutineSampleRepository,
+    private val defaultDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     /**  - - - - - - Launch Coroutine Example - - - - - - - - */
@@ -99,6 +100,16 @@ class CoroutineViewModel(
 
         // Starts a new coroutine on Dispatchers.Default
         val job2 = coroutineContextScope.launch(Dispatchers.Default) {
+            // New coroutine with overridden Dispatcher
+            performBasicNetworkRequest()
+        }
+    }
+
+    /**  - - - - - - Injected Dispatcher Example - - - - - - - - */
+
+    fun injectedDispatcherExample() {
+        // Starts a new coroutine on the injected dispatcher
+        val job2 = coroutineContextScope.launch(defaultDispatcher) {
             // New coroutine with overridden Dispatcher
             performBasicNetworkRequest()
         }

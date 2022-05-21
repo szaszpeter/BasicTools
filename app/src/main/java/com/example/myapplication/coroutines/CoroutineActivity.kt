@@ -39,12 +39,12 @@ class CoroutineActivity : ComponentActivity() {
                         CoroutineScopeButton()
                         JobExampleButton()
                         CoroutineContextExampleButton()
+                        InjectedDispatcherExample()
                     }
                 }
             }
         }
     }
-
 
     @Composable
     fun SimpleCoroutineButton() {
@@ -113,6 +113,15 @@ class CoroutineActivity : ComponentActivity() {
             viewModel.coroutineContextExample()
         }) {
             Text(text = "Coroutine Context")
+        }
+    }
+
+    @Composable
+    fun InjectedDispatcherExample() {
+        Button(onClick = {
+            viewModel.injectedDispatcherExample()
+        }) {
+            Text(text = "Injected Dispatcher")
         }
     }
 
