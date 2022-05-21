@@ -1,5 +1,6 @@
 package com.example.myapplication.flows
 
+import androidx.compose.ui.text.toUpperCase
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.Flow
@@ -8,6 +9,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import org.koin.android.annotation.KoinViewModel
+import java.util.*
 
 @KoinViewModel
 class FlowViewModel(): ViewModel() {
@@ -18,7 +20,8 @@ class FlowViewModel(): ViewModel() {
     val uiState: StateFlow<LatestUIState> = _uiState
 
     fun onTextChanged(text: String) {
-        _uiState.value = LatestUIState.Success(text)
+        //In this example I will simultaneously capture the text and apply a minimal transformation to it
+        _uiState.value = LatestUIState.Success(text.uppercase(Locale.ROOT))
     }
 
 }

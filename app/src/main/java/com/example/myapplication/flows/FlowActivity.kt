@@ -14,6 +14,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -36,8 +37,8 @@ class FlowActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     Column {
-                        TextFieldItem()
-                        CenterTextAlign()
+                        EnterTextItem()
+                        DisplayTextItem()
                     }
                 }
             }
@@ -63,7 +64,7 @@ class FlowActivity : ComponentActivity() {
     }
 
     @Composable
-    fun TextFieldItem() {
+    fun EnterTextItem() {
         var textValue by remember { mutableStateOf(TextFieldValue("")) }
         TextField(
             value = textValue,
@@ -81,7 +82,7 @@ class FlowActivity : ComponentActivity() {
     val text = mutableStateOf("")
 
     @Composable
-    private fun CenterTextAlign() {
+    private fun DisplayTextItem() {
         Row(modifier = Modifier.fillMaxWidth()) {
             // Text is a predefined composable that does exactly what you'd expect it to -
             // display text on the screen. It allows you to customize its appearance using
@@ -89,7 +90,8 @@ class FlowActivity : ComponentActivity() {
             Text(
                 text = text.value,
                 style = TextStyle(
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    fontSize = 24.sp
                 ),
                 modifier = Modifier
                     .padding(16.dp)
