@@ -18,10 +18,13 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".flows.FlowActivity"
+            android:name=".navigation.MenuActivity"
             android:exported="true"
-            android:label="@string/title_activity_flow"
-            android:theme="@style/Theme.MyApplication" >
+            android:label="@string/title_activity_menu"
+            android:theme="@style/Theme.MyApplication" />
+        <activity
+            android:name=".navigation.LauncherActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,11 +32,15 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".flows.FlowActivity"
+            android:exported="true"
+            android:label="@string/title_activity_flow"
+            android:theme="@style/Theme.MyApplication" />
+        <activity
             android:name=".coroutines.CoroutineActivity"
             android:exported="true"
             android:label="@string/title_activity_coroutine"
-            android:theme="@style/Theme.MyApplication"/>
-
+            android:theme="@style/Theme.MyApplication" />
         <activity
             android:name=".jetpack.ComposeActivity"
             android:exported="true"

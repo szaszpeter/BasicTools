@@ -1,48 +1,58 @@
 package com.example.myapplication.coroutines
 
 import android.os.Bundle
-import android.util.Log
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.myapplication.coroutines.ui.theme.MyApplicationTheme
+import androidx.compose.ui.platform.ComposeView
+import com.example.myapplication.R
+import com.example.myapplication.coroutines.CoroutineViewModel
+import com.example.myapplication.koin.viewmodel.MyViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class CoroutineActivity : ComponentActivity() {
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
+
+/**
+ * A simple [Fragment] subclass.
+ * Use the [CoroutineFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
+class CoroutineFragment : Fragment() {
 
     // Lazy Inject ViewModel
-    val viewModel: CoroutineViewModel by viewModel()
+    private val viewModel: CoroutineViewModel by viewModel()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.e("Couroutine", "Activity Launching")
-        setContent {
-            MyApplicationTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Column {
-                        SimpleCoroutineButton()
-                        AsyncAwaitButton()
-                        AsyncAwaitAllButton()
-                        CoroutineScopeButton()
-                        JobExampleButton()
-                        CoroutineContextExampleButton()
-                        InjectedDispatcherExample()
-                    }
-                }
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return ComposeView(requireContext()).apply {
+            setContent {
+                ScreenContent()
             }
+        }
+    }
+
+    @Composable
+    fun ScreenContent() {
+        Column {
+            SimpleCoroutineButton()
+            AsyncAwaitButton()
+            AsyncAwaitAllButton()
+            CoroutineScopeButton()
+            JobExampleButton()
+            CoroutineContextExampleButton()
+            InjectedDispatcherExample()
         }
     }
 
@@ -125,15 +135,16 @@ class CoroutineActivity : ComponentActivity() {
         }
     }
 
-    @Preview(showBackground = true)
-    @Composable
-    fun DefaultPreview2() {
-        MyApplicationTheme {
-            Column {
-                SimpleCoroutineButton()
-                AsyncAwaitButton()
-            }
 
-        }
+    companion object {
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         * @return A new instance of fragment CoroutineFragment.
+         */
+        // TODO: Rename and change types and number of parameters
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            CoroutineFragment()
     }
 }
