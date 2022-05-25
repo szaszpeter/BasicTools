@@ -5,14 +5,16 @@ import kotlinx.coroutines.withContext
 import org.koin.core.annotation.Single
 import java.net.HttpURLConnection
 import java.net.URL
+import javax.inject.Inject
+import javax.inject.Singleton
 
 sealed class Result<out R> {
     data class Success<out T>(val data: T) : Result<T>()
     data class Error(val exception: Exception) : Result<Nothing>()
 }
 
-@Single
-class CoroutineSampleRepository() {
+@Singleton
+class CoroutineSampleRepository @Inject constructor() {
     private val testUrl = "https://reqres.in/api/unknown/2"
 
     // Function that makes the network request, blocking the current thread

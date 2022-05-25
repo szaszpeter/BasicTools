@@ -3,13 +3,15 @@ package com.example.myapplication.coroutines
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import org.koin.android.annotation.KoinViewModel
+import javax.inject.Inject
 
-@KoinViewModel
-class CoroutineViewModel(
+@HiltViewModel
+class CoroutineViewModel @Inject constructor(
     private val coroutineRepo: CoroutineSampleRepository,
-    private val defaultDispatcher: CoroutineDispatcher
+    @CoroutineModule.DispatcherDefault private val defaultDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     /**  - - - - - - Launch Coroutine Example - - - - - - - - */

@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="com.example.myapplication.koin.application.HelloApplication"
+        android:name=".BasicToolsApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -17,7 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
-
+        <activity
+            android:name=".hilt.ExampleActivity"
+            android:exported="false"
+            android:label="@string/title_activity_example"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".navigation.LauncherActivity"
             android:exported="true">
@@ -27,7 +31,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".koin.KoinActivity"
             android:exported="true" />

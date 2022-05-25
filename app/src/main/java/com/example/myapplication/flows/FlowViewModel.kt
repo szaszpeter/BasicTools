@@ -1,18 +1,14 @@
 package com.example.myapplication.flows
 
-import androidx.compose.ui.text.toUpperCase
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.Flow
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.launch
-import org.koin.android.annotation.KoinViewModel
 import java.util.*
+import javax.inject.Inject
 
-@KoinViewModel
-class FlowViewModel(): ViewModel() {
+@HiltViewModel
+class FlowViewModel @Inject constructor(): ViewModel() {
 
     // Backing property to avoid state updates from other classes
     private val _uiState = MutableStateFlow(LatestUIState.Success(""))

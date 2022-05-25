@@ -11,25 +11,14 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
-import com.example.myapplication.R
-import com.example.myapplication.coroutines.CoroutineViewModel
-import com.example.myapplication.koin.viewmodel.MyViewModel
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [CoroutineFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class CoroutineFragment : Fragment() {
 
-    // Lazy Inject ViewModel
-    private val viewModel: CoroutineViewModel by viewModel()
+    private val viewModel: CoroutineViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -134,17 +123,5 @@ class CoroutineFragment : Fragment() {
             Text(text = "Injected Dispatcher")
         }
     }
-
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         * @return A new instance of fragment CoroutineFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CoroutineFragment()
-    }
+    
 }
