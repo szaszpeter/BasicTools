@@ -123,5 +123,5 @@ class CoroutineFragment : Fragment() {
             Text(text = "Injected Dispatcher")
         }
     }
-    
+
 }

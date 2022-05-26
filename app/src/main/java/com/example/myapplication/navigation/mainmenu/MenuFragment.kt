@@ -33,6 +33,7 @@ class MenuFragment : Fragment() {
             CoroutineSamples()
             JetpackSamples()
             FlowSamples()
+            PagerSample()
         }
     }
 
@@ -61,6 +62,15 @@ class MenuFragment : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_menuFragment_to_flowFragment)
         }) {
             Text(text = "Launch Flow Sample")
+        }
+    }
+    @Composable
+    fun PagerSample() {
+        val view = LocalView.current
+        Button(onClick = {
+            Navigation.findNavController(view).navigate(R.id.action_menuFragment_to_pagerFragment)
+        }) {
+            Text(text = "Pager Sample")
         }
     }
 }

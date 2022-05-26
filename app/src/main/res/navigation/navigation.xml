@@ -29,6 +29,9 @@
             app:exitAnim="@animator/nav_default_enter_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_menuFragment_to_pagerFragment"
+            app:destination="@id/pagerFragment" />
     </fragment>
 
     <fragment
@@ -43,6 +46,11 @@
         android:id="@+id/composeFragment"
         android:name="com.example.myapplication.jetpack.ComposeFragment"
         android:label="ComposeFragment" />
+    <fragment
+        android:id="@+id/pagerFragment"
+        android:name="com.example.myapplication.pager.PagerFragment"
+        android:label="fragment_pager"
+        tools:layout="@layout/fragment_pager" />
 
 
 </navigation>

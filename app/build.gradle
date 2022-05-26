@@ -131,4 +131,12 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.40.5")
     kapt("com.google.dagger:hilt-android-compiler:2.40.5")
 
+    // Pager
+    implementation "com.google.accompanist:accompanist-pager:0.24.9-beta"
+    // If using indicators, also depend on
+    implementation "com.google.accompanist:accompanist-pager-indicators:0.24.9-beta"
+
+    // Coil
+    implementation("io.coil-kt:coil-compose:2.1.0")
+
 }
