@@ -34,6 +34,7 @@ class MenuFragment : Fragment() {
             JetpackSamples()
             FlowSamples()
             PagerSample()
+            ThreadPoolSample()
         }
     }
 
@@ -71,6 +72,16 @@ class MenuFragment : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_menuFragment_to_pagerFragment)
         }) {
             Text(text = "Pager Sample")
+        }
+    }
+
+    @Composable
+    fun ThreadPoolSample() {
+        val view = LocalView.current
+        Button(onClick = {
+            Navigation.findNavController(view).navigate(R.id.action_menuFragment_to_threadPoolFragment)
+        }) {
+            Text(text = "ThreadPool Sample")
         }
     }
 }

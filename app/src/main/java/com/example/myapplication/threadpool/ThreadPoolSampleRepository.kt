@@ -1,0 +1,42 @@
+package com.example.myapplication.threadpool
+
+import android.util.Log
+import java.net.HttpURLConnection
+import java.net.URL
+import java.util.concurrent.Executor
+import javax.inject.Inject
+import javax.inject.Singleton
+
+@Singleton
+class ThreadPoolSampleRepository @Inject constructor(
+    private val executor: Executor
+) {
+    private val testUrl = "https://reqres.in/api/unknown/2"
+
+    fun makeAsyncRequest() {
+        executor.execute {
+            makeTestRequest()
+        }
+    }
+
+    // Function that makes the network request, blocking the current thread
+    fun makeTestRequest(): Result<String> {
+        // Blocking network request code
+        val url = URL(testUrl)
+        (url.openConnection() as? HttpURLConnection)?.run {
+            requestMethod = "GET"
+            setRequestProperty("Content-Type", "application/json; utf-8")
+            setRequestProperty("Accept", "application/json")
+            doOutput = true
+            val inputAsString = inputStream.bufferedReader().use { it.readText() }
+            Log.e("Response: ", inputAsString)
+            return Result.Success(inputAsString)
+        }
+        return Result.Error(Exception("Cannot open HttpURLConnection"))
+    }
+}
+
+sealed class Result<out R> {
+    data class Success<out T>(val data: T) : Result<T>()
+    data class Error(val exception: Exception) : Result<Nothing>()
+}

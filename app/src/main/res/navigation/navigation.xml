@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_menuFragment_to_pagerFragment"
             app:destination="@id/pagerFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_threadPoolFragment"
+            app:destination="@id/threadPoolFragment" />
     </fragment>
 
     <fragment
@@ -51,6 +54,10 @@
         android:name="com.example.myapplication.pager.PagerFragment"
         android:label="fragment_pager"
         tools:layout="@layout/fragment_pager" />
+    <fragment
+        android:id="@+id/threadPoolFragment"
+        android:name="com.example.myapplication.threadpool.ThreadPoolFragment"
+        android:label="ThreadPoolFragment" />
 
 
 </navigation>
