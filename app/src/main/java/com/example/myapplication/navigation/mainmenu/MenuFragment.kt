@@ -6,13 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalView
 import androidx.navigation.Navigation
 import com.example.myapplication.R
+import com.example.myapplication.flows.ui.theme.MyApplicationTheme
 
 class MenuFragment : Fragment() {
 
@@ -22,7 +27,14 @@ class MenuFragment : Fragment() {
     ): View? {
         return ComposeView(requireContext()).apply {
             setContent {
-                MenuContent()
+                MyApplicationTheme(true) {
+                    Surface(
+                        modifier = Modifier.fillMaxSize(),
+                        color = MaterialTheme.colors.background
+                    ) {
+                        MenuContent()
+                    }
+                }
             }
         }
     }
@@ -42,11 +54,13 @@ class MenuFragment : Fragment() {
     fun CoroutineSamples() {
         val view = LocalView.current
         Button(onClick = {
-            Navigation.findNavController(view).navigate(R.id.action_menuFragment_to_coroutineFragment)
+            Navigation.findNavController(view)
+                .navigate(R.id.action_menuFragment_to_coroutineFragment)
         }) {
             Text(text = "Launch Coroutine Sample")
         }
     }
+
     @Composable
     fun JetpackSamples() {
         val view = LocalView.current
@@ -56,6 +70,7 @@ class MenuFragment : Fragment() {
             Text(text = "Launch Jetpack Sample")
         }
     }
+
     @Composable
     fun FlowSamples() {
         val view = LocalView.current
@@ -65,6 +80,7 @@ class MenuFragment : Fragment() {
             Text(text = "Launch Flow Sample")
         }
     }
+
     @Composable
     fun PagerSample() {
         val view = LocalView.current
@@ -79,7 +95,8 @@ class MenuFragment : Fragment() {
     fun ThreadPoolSample() {
         val view = LocalView.current
         Button(onClick = {
-            Navigation.findNavController(view).navigate(R.id.action_menuFragment_to_threadPoolFragment)
+            Navigation.findNavController(view)
+                .navigate(R.id.action_menuFragment_to_threadPoolFragment)
         }) {
             Text(text = "ThreadPool Sample")
         }

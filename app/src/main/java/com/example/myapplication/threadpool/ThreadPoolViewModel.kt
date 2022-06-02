@@ -11,7 +11,12 @@ class ThreadPoolViewModel @Inject constructor(
 ): ViewModel() {
 
     fun makeTestRequest() {
-        threadPoolSampleRepository.makeAsyncRequest()
+        threadPoolSampleRepository.makeAsyncRequest {result ->
+            when(result) {
+                is Result.Success<String> -> Log.e("Result Success", result.data)
+                is Result.Error -> Log.e("Result Failure", result.exception.toString())
+            }
+        }
     }
 }
 

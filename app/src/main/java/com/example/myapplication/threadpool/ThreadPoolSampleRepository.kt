@@ -13,26 +13,30 @@ class ThreadPoolSampleRepository @Inject constructor(
 ) {
     private val testUrl = "https://reqres.in/api/unknown/2"
 
-    fun makeAsyncRequest() {
+    fun makeAsyncRequest(callback: (Result<String>) -> Unit) {
         executor.execute {
-            makeTestRequest()
+            makeTestRequest(callback)
         }
     }
 
     // Function that makes the network request, blocking the current thread
-    fun makeTestRequest(): Result<String> {
+    fun makeTestRequest(callback: (Result<String>) -> Unit) {
         // Blocking network request code
-        val url = URL(testUrl)
-        (url.openConnection() as? HttpURLConnection)?.run {
-            requestMethod = "GET"
-            setRequestProperty("Content-Type", "application/json; utf-8")
-            setRequestProperty("Accept", "application/json")
-            doOutput = true
-            val inputAsString = inputStream.bufferedReader().use { it.readText() }
-            Log.e("Response: ", inputAsString)
-            return Result.Success(inputAsString)
+        try {
+            val url = URL(testUrl)
+            (url.openConnection() as? HttpURLConnection)?.run {
+                requestMethod = "GET"
+                setRequestProperty("Content-Type", "application/json; utf-8")
+                setRequestProperty("Accept", "application/json")
+                doOutput = true
+                val inputAsString = inputStream.bufferedReader().use { it.readText() }
+                Log.e("Response: ", inputAsString)
+                callback(Result.Success(inputAsString))
+            }
+        } catch (e: Exception) {
+            val errorResult = Result.Error(e)
+            callback(errorResult)
         }
-        return Result.Error(Exception("Cannot open HttpURLConnection"))
     }
 }
 
