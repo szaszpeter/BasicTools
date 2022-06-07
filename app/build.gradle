@@ -113,9 +113,6 @@ dependencies {
     implementation("androidx.compose.runtime:runtime-livedata:1.1.1")
     implementation("androidx.compose.runtime:runtime-rxjava2:1.1.1")
 
-    // UI Tests
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.1.1")
-
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.0-rc01")
@@ -138,5 +135,11 @@ dependencies {
 
     // Coil
     implementation("io.coil-kt:coil-compose:2.1.0")
+
+    // UI Testing
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.4.0')
+    androidTestImplementation('androidx.test:runner:1.4.0')
+    androidTestImplementation('androidx.test:rules:1.4.0')
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.1.1")
 
 }
