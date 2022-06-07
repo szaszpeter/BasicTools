@@ -69,6 +69,7 @@ class FlowFragment : Fragment() {
         var textValue by remember { mutableStateOf(TextFieldValue("")) }
         TextField(
             value = textValue,
+            placeholder = { Text(text = "Type some text") },
             modifier = Modifier
                 .padding(16.dp)
                 .fillMaxWidth(),
