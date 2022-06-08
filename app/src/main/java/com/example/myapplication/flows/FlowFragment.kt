@@ -23,8 +23,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.myapplication.flows.ui.theme.MyApplicationTheme
+import com.example.myapplication.navigation.LauncherActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import org.jetbrains.annotations.TestOnly
 
 @AndroidEntryPoint
 class FlowFragment : Fragment() {
@@ -76,6 +78,7 @@ class FlowFragment : Fragment() {
             // Update value of textValue with the latest value of the text field
             onValueChange = {
                 textValue = it
+                setIdlingTo(false)
                 viewModel.onTextChanged(it.text)
             }
         )
@@ -111,11 +114,23 @@ class FlowFragment : Fragment() {
                 viewModel.uiState.collect { uiState ->
                     // New value received
                     when (uiState) {
-                        is LatestUIState.Success -> text.value = uiState.newText
+                        is LatestUIState.Success -> {
+                            text.value = uiState.newText
+                            if (!uiState.newText.isNullOrEmpty()) {
+                                setIdlingTo(true)
+                            }
+                        }
                         is LatestUIState.Error -> text.value = uiState.exception.message.toString()
                     }
                 }
             }
         }
+    }
+
+    @TestOnly
+    private fun setIdlingTo(isIdle: Boolean) {
+        (activity as LauncherActivity).mIdlingResourceCompose?.setIdleState(
+            isIdle
+        )
     }
 }

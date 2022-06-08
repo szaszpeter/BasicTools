@@ -88,16 +88,21 @@ dependencies {
     // Testing
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    testImplementation "io.insert-koin:koin-test:3.2.0"
+    androidTestImplementation('androidx.test:rules:1.4.0')
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.1.1")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:$compose_version")
+    debugImplementation("androidx.compose.ui:ui-test-manifest:1.1.1")
+    debugImplementation("androidx.compose.ui:ui-test:1.1.1")
+    implementation 'androidx.test.espresso:espresso-idling-resource:3.5.0-alpha07'
+    debugImplementation 'androidx.fragment:fragment-testing:1.4.1'
+
 
     // Koin for Kotlin apps
     implementation "io.insert-koin:koin-core:3.2.0"
     implementation "io.insert-koin:koin-android:3.2.0"
     implementation "io.insert-koin:koin-annotations:1.0.0-beta-2"
     ksp "io.insert-koin:koin-ksp-compiler:1.0.0-beta-2"
-
-    // Testing
-    testImplementation "io.insert-koin:koin-test:3.2.0"
 
     implementation("androidx.compose.ui:ui:1.1.1")
     // Tooling support (Previews, etc.)
@@ -120,8 +125,7 @@ dependencies {
     // Networking
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
-
-    implementation 'com.squareup.okhttp3:okhttp:3.14.9'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
 
     // HILT
@@ -135,11 +139,4 @@ dependencies {
 
     // Coil
     implementation("io.coil-kt:coil-compose:2.1.0")
-
-    // UI Testing
-    androidTestImplementation('androidx.test.espresso:espresso-core:3.4.0')
-    androidTestImplementation('androidx.test:runner:1.4.0')
-    androidTestImplementation('androidx.test:rules:1.4.0')
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.1.1")
-
 }
