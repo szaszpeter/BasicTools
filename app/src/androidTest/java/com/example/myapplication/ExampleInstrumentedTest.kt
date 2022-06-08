@@ -4,8 +4,12 @@ import android.view.View
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createEmptyComposeRule
 import androidx.test.core.app.ActivityScenario
+import androidx.test.espresso.Espresso
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.IdlingResource
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.myapplication.navigation.LauncherActivity
 import org.hamcrest.Matcher
@@ -48,7 +52,18 @@ class ExampleInstrumentedTest {
     fun myTest() {
         composeTestRule.onNodeWithText("Launch Flow Sample").performClick()
         composeTestRule.onNodeWithText("Type some text").performTextInput("some text")
-        composeTestRule.onNodeWithText("some text").assertIsDisplayed()
+
+        // First assertion checks if there are in total 2 view with the same text. Normally the processed output is uppercase
+        // but in order to count the views, we are ignoring the case at this point.
+        composeTestRule.onAllNodes(hasText("some text", false ,ignoreCase = true)).assertCountEquals(2)
+
+        // Second assertion that checks that indeed the processed text is displayed with Caps. This is also a good example for
+        // semantics matchers.
+        composeTestRule.onNodeWithText("SOME TEXT").assert(hasText("SOME TEXT",
+            substring = false,
+            ignoreCase = false
+        ))
+
     }
 
     @After
