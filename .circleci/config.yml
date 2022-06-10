@@ -60,7 +60,7 @@ workflows:
       - android-test:
           requires:
             - unit-test
-      - release-buid:
+      - release-build:
           requires:
             - android-test
 
