@@ -1,24 +1,14 @@
 package com.example.myapplication
 
-import android.view.View
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createEmptyComposeRule
 import androidx.test.core.app.ActivityScenario
-import androidx.test.espresso.Espresso
-import androidx.test.espresso.IdlingRegistry
-import androidx.test.espresso.IdlingResource
-import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.myapplication.navigation.LauncherActivity
-import org.hamcrest.Matcher
-import org.hamcrest.TypeSafeMatcher
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.Description
 import org.junit.runner.RunWith
 
 
@@ -30,7 +20,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
 
-    private var mIdlingResourceCompose: androidx.compose.ui.test.IdlingResource? = null
+    private var mIdlingResourceCompose: IdlingResource? = null
 
     /**
      * Use [to launch and get access to the activity.][ActivityScenario.onActivity]
