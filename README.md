@@ -1,3 +1,5 @@
+CircleCI: [![<ORG_NAME>](https://circleci.com/gh/szaszpeter/BasicTools.svg?style=svg)](https://app.circleci.com/pipelines/github/szaszpeter/BasicTools)
+
 # BasicTools
 Sample Code for Android Development
 
