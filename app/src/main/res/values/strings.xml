@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">BasicTools</string>
     <string name="title_activity_compose">ComposeActivity</string>
     <string name="title_activity_coroutine">CoroutineActivity</string>
     <string name="title_activity_flow">FlowActivity</string>
@@ -21,4 +21,15 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_example">ExampleActivity</string>
+    <string name="coroutine_sample_title">1. Different ways to implement coroutines </string>
+    <string name="jetpack_sample_title">2. Jetpack sample based on Android Docs</string>
+    <string name="flow_sample_title">3. A simple Kotlin Flow implementation</string>
+    <string name="pager_sample_title">4. Accompanist Pager Sample implementation</string>
+    <string name="threadpool_sample_title">5. How to use a ThreadPool Executor</string>
+    <string name="launch_coroutine_sample">Launch Coroutine Sample</string>
+    <string name="launch_jetpack_sample">Launch Jetpack Sample</string>
+    <string name="launch_flow_sample">Launch Flow Sample</string>
+    <string name="launch_pager_sample">Launch Pager Sample</string>
+    <string name="launch_threadpool_sample">Launch ThreadPool Sample</string>
+    <string name="explanation_footer_title">Learn about these by looking at the code: </string>
 </resources>
